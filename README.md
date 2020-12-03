@@ -10,7 +10,7 @@ Add Windows Service:
 
 `Install-Package Microsoft.Extensions.Hosting.WindowsServices`
 
-And add `.UseWindowService()` to the end of HostBuilder:
+And add `.UseWindowsService()` to the end of HostBuilder:
 
 ```cs
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -25,10 +25,10 @@ Build the service:
 
 `dotnet publish -r win-x64 -c Release`
 
-Installing, Starting, Stopping is BAU:
+Installing, Starting, Stopping and Deleting is BAU (in cmd (not powershell...) running as administrator):
 
 ```
-sc create TestService BinPath=C:\full\path\to\publish\dir\WindowsServiceExample.exe
+sc create TestService BinPath= "C:\full\path\to\publish\dir\WindowsServiceExample.exe"
 sc start TestService
 sc stop TestService
 sc delete TestService
