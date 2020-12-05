@@ -1,4 +1,4 @@
-# .NET Core 3 Windows Service (Worker)
+# .NET Core 3/5 Windows Service (Worker)
 
 Create a new project in \WindowsServiceExample\WindowsServiceExample.proj:
 
