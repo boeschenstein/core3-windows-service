@@ -42,4 +42,10 @@ sc stop TestService
 sc delete TestService
 ```
 
-Check *Windows EventLog* for Logging and *Windows Services* if service is running.
+> TODO: _logger.LogInformation is not visible in EventLog (_logger.LogWarning is shown)
+
+## Information
+
+- to debug, set both projects as startup
+- Check *Windows EventLog* for Logging 
+- Check *Windows Services* if service is running.
