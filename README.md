@@ -41,3 +41,5 @@ sc start TestService
 sc stop TestService
 sc delete TestService
 ```
+
+Check *Windows EventLog* for Logging and *Windows Services* if service is running.
