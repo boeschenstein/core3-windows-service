@@ -6,19 +6,27 @@ Create a new project in \WindowsServiceExample\WindowsServiceExample.proj:
 
 Source: https://dotnetcoretutorials.com/2019/12/07/creating-windows-services-in-net-core-part-3-the-net-core-worker-way/
 
-Add Windows Service:
+Add Windows Service to listen to start/stop functionality:
 
 `Install-Package Microsoft.Extensions.Hosting.WindowsServices`
 
-And add `.UseWindowsService()` to the end of HostBuilder:
+and for logging to Windows EventLog:
+
+`Install-Package Microsoft.Extensions.Logging.EventLog`
+
+Add `.UseWindowsService()` to the end of HostBuilder and `.ConfigureLogging(loggerFactory => loggerFactory.AddEventLog())` for Logging to Windows:
 
 ```cs
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddHostedService<Worker>();
-                }).UseWindowsService();
+using Microsoft.Extensions.Logging;
+
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(loggerFactory => loggerFactory.AddEventLog()) // needs `using Microsoft.Extensions.Logging;`
+        .ConfigureServices((hostContext, services) =>
+        {
+            services.AddHostedService<Worker>();
+        })
+        .UseWindowsService();
 ```
 
 Build the service:
