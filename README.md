@@ -38,6 +38,7 @@ Installing, Starting, Stopping and Deleting is BAU (in cmd (not powershell...) r
 ```
 sc create TestService BinPath= "C:\full\path\to\publish\dir\WindowsServiceExample.exe"
 sc start TestService
+sc config TestService start= delayed-auto
 sc stop TestService
 sc delete TestService
 ```
