@@ -38,9 +38,15 @@ Installing, Starting, Stopping and Deleting is BAU (in cmd (not powershell...) r
 ```
 sc create TestService BinPath= "C:\full\path\to\publish\dir\WindowsServiceExample.exe"
 sc start TestService
-sc config TestService start= delayed-auto
 sc stop TestService
 sc delete TestService
+```
+
+Delayed start:
+
+```
+sc config TestService start= delayed-auto
+sc start TestService start= delayed-auto
 ```
 
 > TODO: _logger.LogInformation is not visible in EventLog (_logger.LogWarning is shown)
@@ -50,3 +56,7 @@ sc delete TestService
 - to debug, set both projects as startup
 - Check *Windows EventLog* for Logging 
 - Check *Windows Services* if service is running.
+
+## Access issue
+
+netsh http add urlacl url=http://+:4718/TestService.MyNamespace user=Everyone
