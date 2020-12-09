@@ -57,6 +57,12 @@ sc start TestService start= delayed-auto
 - Check *Windows EventLog* for Logging 
 - Check *Windows Services* if service is running.
 
+## InstallUtil not suited for .net core
+
+Use this for .net classic:
+
+`c:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe "G:\INETPUB\WEBAPPS\MyApp\TestServer.exe"`
+
 ## Access issue
 
 netsh http add urlacl url=http://+:4718/TestService.MyNamespace user=Everyone
